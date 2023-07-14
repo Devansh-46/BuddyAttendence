@@ -9,9 +9,9 @@ from datetime import datetime
 
 
 path = 'ImagesAttendence' # defining the path to the images for attendence
-images = list() # list of images
+images = [] # list of images
 
-classNames = list()
+classNames = []
 mylist = os.listdir(path) # list of names of the images in the directory
 
 for cl in mylist:  #import the images and their names and store it in the lists
@@ -20,7 +20,7 @@ for cl in mylist:  #import the images and their names and store it in the lists
     classNames.append(os.path.splitext(cl)[0]) # adds the image to the listdir
 
 def findencoding(images):  # function to defined to find the encodings of the images and store them in the list
-    encodeList = list() # list of encodings for the images
+    encodeList = [] # list of encodings for the images
     for img in images:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         encodeimg = face_recognition.face_encodings(img)[0]
@@ -31,7 +31,7 @@ def findencoding(images):  # function to defined to find the encodings of the im
 def markattendence(name): # function to defined to markattendence
     with open('Attendence.txt', 'r+') as f:
         myDatalist = f.readlines()
-        NameList = list()
+        NameList = []
 
         for line in myDatalist:
             entry = line.split(', ')
